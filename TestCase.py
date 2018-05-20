@@ -1,7 +1,7 @@
-class TestCase:
+class TestCase(object):
     def __init__(self, name):
         self.name = name
-    
+
     def setUp(self):
         pass
 
@@ -9,3 +9,7 @@ class TestCase:
         self.setUp()
         method = getattr(self, self.name)
         method()
+        self.tearDown()
+
+    def tearDown(self):
+        pass

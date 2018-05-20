@@ -1,18 +1,15 @@
-from TestCase import TestCase
+from testCase import TestCase
+
 
 class WasRun(TestCase):
-    
     def __init__(self, name):
-        self.wasRun = None
         TestCase.__init__(self, name)
-    
-    def testMethod(self):
-        self.wasRun = 1
-    
-    def run(self):
-        method = getattr(self, self.name)
-        method()
 
     def setUp(self):
-        self.wasSetUp = 1
         self.log = "setUp "
+
+    def testMethod(self):
+        self.log = self.log + "testMethod "
+
+    def tearDown(self):
+        self.log = self.log + "tearDown "
