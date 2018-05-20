@@ -1,19 +1,19 @@
-class WasRun:
+class TestCase(object):
     def __init__(self, name):
-        self.wasRun = None
         self.name = name
-
-    def testMethod(self):
-        self.wasRun = 1
 
     def run(self):
         method = getattr(self, self.name)
         method()
 
 
-class TestCase(object):
-    def __init__(self):
-        pass
+class WasRun(TestCase):
+    def __init__(self, name):
+        self.wasRun = None
+        TestCase.__init__(self, name)
+
+    def testMethod(self):
+        self.wasRun = 1
 
 
 class TestCaseTest(TestCase):
@@ -22,3 +22,6 @@ class TestCaseTest(TestCase):
         assert(not test.wasRun)
         test.run()
         assert(test.wasRun)
+
+
+TestCaseTest("testRunning").run()
