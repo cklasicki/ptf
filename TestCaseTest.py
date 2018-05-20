@@ -10,7 +10,15 @@ class WasRun:
         method = getattr(self, self.name)
         method()
 
-test = WasRun("testMethod")
-print(test.wasRun)
-test.run()
-print(test.wasRun)
+
+class TestCase(object):
+    def __init__(self):
+        pass
+
+
+class TestCaseTest(TestCase):
+    def testRunning(self):
+        test = WasRun("testMethod")
+        assert(not test.wasRun)
+        test.run()
+        assert(test.wasRun)
