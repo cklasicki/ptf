@@ -1,18 +1,16 @@
-from TestCase import TestCase
-from WasRun import WasRun
+class WasRun:
+    def __init__(self, name):
+        self.wasRun = None
+        self.name = name
 
-class TestCaseTest(TestCase):
-    
-    def setUp(self):
-        self.test=WasRun("testMethod")
-    
-    def testRunning(self):
-        self.test.run()
-        assert(self.test.wasRun)
+    def testMethod(self):
+        self.wasRun = 1
 
-    def testSetUp(self):
-        self.test.run()
-        assert(self.test.wasSetUp)
+    def run(self):
+        method = getattr(self, self.name)
+        method()
 
-TestCaseTest("testRunning").run()
-TestCaseTest("testSetUp").run()
+test = WasRun("testMethod")
+print(test.wasRun)
+test.run()
+print(test.wasRun)

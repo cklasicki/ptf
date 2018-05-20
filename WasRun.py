@@ -4,7 +4,6 @@ class WasRun(TestCase):
     
     def __init__(self, name):
         self.wasRun = None
-        self.wasSetUp = 1
         TestCase.__init__(self, name)
     
     def testMethod(self):
@@ -16,3 +15,4 @@ class WasRun(TestCase):
 
     def setUp(self):
         self.wasSetUp = 1
+        self.log = "setUp "
