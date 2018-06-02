@@ -17,7 +17,8 @@ class TestCase(object):
             method()
         except:
             result.testFailed()
-        self.tearDown()
+        finally:
+            self.tearDown()
 
     def tearDown(self):
         pass
